@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package image;
+
+service Image {
+  rpc UploadImg(FileHeader) returns (Messages) {}
+}
+
+message FileHeader {
+  string filename = 1;
+  string contentType = 2;
+  uint64 size = 3;
+  repeated string header = 4;
+  bytes content = 5;
+}
+
+message Messages {
+  string message = 1;
+}
