@@ -1,6 +1,6 @@
 import grpc
-import generated.image_pb2_grpc as grpcImageService
-from controllers.image import ImageService
+import image_pb2_grpc as grpcImageService
+from src.controllers.image import ImageService
 
 
 def serve():
