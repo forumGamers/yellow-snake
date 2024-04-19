@@ -1,5 +1,12 @@
-from imagekitio.client import ImageKit, UpdateFileRequestOptions, UploadFileResult, ResponseMetadataResult, BulkDeleteFileResult
+from imagekitio.client import (
+    ImageKit,
+    UpdateFileRequestOptions,
+    UploadFileResult,
+    ResponseMetadataResult,
+    BulkDeleteFileResult
+)
 from src.conf.env import value
+from typing import List
 
 
 class Upload:
@@ -12,8 +19,8 @@ class Upload:
 
     def upload_file(
         self,
-        url: str,
-        filename: set,
+        url: str | List[int],
+        filename: str,
         opts: UpdateFileRequestOptions | None
     ) -> UploadFileResult:
         return self.client.upload(file=url, file_name=filename, options=opts)
@@ -21,5 +28,5 @@ class Upload:
     def delete_file(self, file_id: str) -> ResponseMetadataResult:
         return self.client.delete_file(file_id)
 
-    def bulk_delete_file(self, file_ids: list[str]) -> BulkDeleteFileResult:
+    def bulk_delete_file(self, file_ids: List[str]) -> BulkDeleteFileResult:
         return self.client.bulk_file_delete(file_ids)

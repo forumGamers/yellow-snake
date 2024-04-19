@@ -3,7 +3,7 @@ syntax = "proto3";
 package image;
 
 service Image {
-  rpc UploadImg(FileHeader) returns (Messages) {}
+  rpc UploadImg(FileHeader) returns (UploadFileResult) {}
 }
 
 message FileHeader {
@@ -16,4 +16,10 @@ message FileHeader {
 
 message Messages {
   string message = 1;
+}
+
+message UploadFileResult {
+  string file_id = 1;
+  string name = 2;
+  string url = 3;
 }
